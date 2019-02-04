@@ -60,15 +60,16 @@ public class Datenbank
             
             //Klasseninstanz ausgabe bekommt Zuweisung des Objektes befehl und ruft die Funktion
             //executeQuery auf --> enthält den SQL-Syntax für SELECT FROM aus der Datenbanktabelle
-            //imperiummitglied
-            ausgabe = befehl.executeQuery("SELECT * FROM imperiummitglied");
+            //mitarbeiter
+            ausgabe = befehl.executeQuery("SELECT * FROM mitarbeiter");
             
             //Pro ausgelesenem Datensatz wird eine Zeile erzeugt
             while(ausgabe.next())            
             {   //Ausgabe der gefundenen Datensätze mit Zuordnung der Funktion getInt()/getString() fÃ¼r 
-                //die Spalte ImperiumID (Datentyp integer)
-                //die Spalte ImperiumName (Datentyp String)
-                System.out.println("\n" + ausgabe.getInt("ImperiumID") + "  " + ausgabe.getString("ImperiumName"));
+                //die Spalte RealTimeCCID (Datentyp integer)
+                //die Spalte RealTimeCCName (Datentyp String)
+                System.out.println("\n" + ausgabe.getInt("realtimeccID") + "  " + ausgabe.getString("realtimeccName"));
+                
             }
           
             System.out.println("\n" + "\n" + "Datenabfrage erfolgreich abgeschlossen");
@@ -93,7 +94,7 @@ public class Datenbank
             Connection verbindung = erstelleVerbindung();
             
             //Erzeugen eines Objektes erstelleEintrag --> bekommt Zuweisung des Objektes verbindung und ruft die Funktion
-            //prepareStatement auf --> wird benötigt, um im Folgenden den SQL-Befehl auszufÃ¼hren           
+            //prepareStatement auf --> wird benötigt, um im Folgenden den SQL-Befehl auszufuehren           
             befehl = verbindung.createStatement();
             
             String sql_insert = "INSERT INTO mitarbeiter(Name,Nachname,Email,Telefonnummer,"
@@ -101,10 +102,10 @@ public class Datenbank
                     + "VALUES('"+text+"','"+text0+"','"+text1+"','"+text2+"','"+text3+"','"+text4+"')";
             //Objektes erstelleEintrag ruft die Funktion
             //executeUpdate auf --> enthält den SQL-Syntax für INSERT INTO in die Datenbanktabelle
-            //imperiummitglied
+            //RealTimeCCMitarbeiter
             befehl.executeUpdate(sql_insert);
             
-            System.out.println("neuer Datensatz erfolgreich erstellt.");
+            System.out.println("Neuer Datensatz erfolgreich erstellt.");
             
             //Nachdem alle Datensätze abgerufen wurden, wird die Verbindung zur DB geschlossen
             verbindung.close();   
@@ -126,9 +127,9 @@ public class Datenbank
         {
             Connection verbindung = erstelleVerbindung();
             befehl = verbindung.createStatement();
-            String sql_change = "UPDATE imperiummitglied SET ImperiumName =  ('" +nameneu+ "') WHERE  ImperiumID = ('"+id+"')";          
+            String sql_change = "UPDATE mitarbeiter SET RealTimeCCName =  ('" +nameneu+ "') WHERE  RealTimeCCID = ('"+id+"')";          
             befehl.executeUpdate(sql_change);
-            System.out.println("Datensatz mit der ImperiumID " + id + " erfolgreich geändert.");
+            System.out.println("Datensatz mit der RealTimeCCID " + id + " erfolgreich geändert.");
            
         }
         catch (Exception abbruch)
@@ -147,7 +148,7 @@ public class Datenbank
         {
             Connection verbindung = erstelleVerbindung();
             befehl = verbindung.createStatement();
-            String sql_delete = "DELETE FROM imperiummitglied WHERE ImperiumID = ('"+id+"')";
+            String sql_delete = "DELETE FROM Mitarbeiter WHERE RealTimeCCID = ('"+id+"')";
             befehl.executeUpdate(sql_delete);
             System.out.println("Datensatz mit der ImperiumID " +id + " erfolgreich gelöscht.");           
         }
