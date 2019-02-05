@@ -5,6 +5,7 @@
  */
 package realtimecc;
 
+import static java.awt.SystemColor.text;
 import javax.swing.*;
 import java.sql.*;
 /**
@@ -47,10 +48,14 @@ public class Datenbank
     } 
    
     //Methode zum Abrufen der Datensätze aus der DB
-    public static void zeigeDatensatz() throws Exception
+    public static String zeigeDatensatz() throws Exception
     {
+        String ausgabe2 = null;
         try
-        {   //Erzeugen eines Objektes verbindung aus der Klasse Connection mit Zuweisung der Methode
+        {  
+            
+            
+            //Erzeugen eines Objektes verbindung aus der Klasse Connection mit Zuweisung der Methode
             //erstelleVerbindung();
             Connection verbindung = erstelleVerbindung();
             
@@ -65,10 +70,10 @@ public class Datenbank
             
             //Pro ausgelesenem Datensatz wird eine Zeile erzeugt
             while(ausgabe.next())            
-            {   //Ausgabe der gefundenen Datensätze mit Zuordnung der Funktion getInt()/getString() fÃ¼r 
+            {   //Ausgabe der gefundenen Datensätze mit Zuordnung der Funktion getInt()/getString() fuehr 
                 //die Spalte RealTimeCCID (Datentyp integer)
                 //die Spalte RealTimeCCName (Datentyp String)
-                System.out.println("\n" + ausgabe.getInt("realtimeccID") + "  " + ausgabe.getString("realtimeccName"));
+                ausgabe2 = ausgabe2 + (ausgabe.getInt("ID") + "  " + ausgabe.getString("Name")+ " " + ausgabe.getString("Nachname"))+"\r\n";
                 
             }
           
@@ -82,6 +87,8 @@ public class Datenbank
             //System.out.println(abbruch.getMessage());
             abbruch.printStackTrace();
         }
+        
+        return ausgabe2;
     } 
     
     //Methode zum Erstellen neuer Datensätze in der DB
