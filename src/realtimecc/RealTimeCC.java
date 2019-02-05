@@ -44,7 +44,7 @@ public class RealTimeCC {
     {
          // Erstelle Frame um zwischen Login und Admin zu wählen
         JFrame jf = new JFrame();
-            jf.setTitle("IHKPrüfung_Auswertung");
+            jf.setTitle("Login Portal");
             jf.setLayout(null);
             jf.setSize(new Dimension(600, 300));
             jf.getContentPane().setBackground(Color.DARK_GRAY);
