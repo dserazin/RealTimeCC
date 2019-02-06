@@ -19,7 +19,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import static realtimecc.Datenbank.ausgabe;
 import static realtimecc.Datenbank.erstelleDatensatz;
+import static realtimecc.Datenbank.zeigeDatensatz;
 import static realtimecc.Login.Login;
 
 /**
@@ -148,7 +150,14 @@ JLabel jl0 = new JLabel();
             
         
             
-//___________ Schaltfläche Berechnung______________________________________
+//___________ Schaltflächen Anzeige / Mitarbeiter anlegen / Löschen______________________________________
+       
+       JButton jcb3 = new JButton("Anzeigen", null);
+            jcb3.setForeground(Color.blue);
+            jcb3.setBackground(Color.red);
+            jcb3.setBounds(30, 263, 180, 40);
+            jf.add(jcb3);
+            
        JButton jcb1 = new JButton("Mitarbeiter anlegen", null);
             jcb1.setForeground(Color.blue);
             jcb1.setBackground(Color.red);
@@ -161,42 +170,46 @@ JLabel jl0 = new JLabel();
             jcb2.setBounds(450, 263, 180, 40);
             jf.add(jcb2);
             
-            JButton jcb3 = new JButton("Anzeigen", null);
-            jcb3.setForeground(Color.blue);
-            jcb3.setBackground(Color.red);
-            jcb3.setBounds(30, 263, 180, 40);
-            jf.add(jcb3);
-            
                // ListenerButton Ausgabe Berechnung / Textfeld 
         JTextArea jta = new JTextArea();           
-            jta.setBounds(150, 350, 360, 160);
+            jta.setBounds(150, 350, 360, 300);
             jta.setOpaque(true);
             jta.setBackground(Color.LIGHT_GRAY);
             
             jta.setFont(new Font("areal",255,10));
             jf.add(jta);  
             
-            //Textfelder zuweisen
-          jcb1.addActionListener((ActionEvent e) -> {
-           
-            String text = jtf1.getText();
+//____________________ActionListener für JButton Mitarbeiter anlegen __________________________________
+          jcb1.addActionListener((ActionEvent e) -> 
+   {
+            
+            String text  = jtf1.getText();
             String text0 = jtf2.getText();
             String text1 = jtf5.getText();
             String text2 = jtf6.getText();  
             String text3 = (String) cb1.getSelectedItem();
             String text4 = (String) cb2.getSelectedItem();
+            
+        // Textfeld wird bereinigt______
+             jtf0.setText(null);
+             jtf1.setText(null);
+             jtf2.setText(null);
+             jtf5.setText(null);
+             jtf6.setText(null);
+             cb1.setSelectedItem(null);
+             cb2.setSelectedItem(null);
+             
             try {
                 
-                
-              
                 erstelleDatensatz(text,text0,text1,text2,text3,text4);
+                // Text wird in JTextArea ausgegeben
+                jta.setText(" Daten gespeichert \r\n Vorgang abgeschlossen ");
             } catch (Exception ex) {
                 Logger.getLogger(RealTimeCC.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            // Textfelder werden in JTextArea ausgegeben
-                   jta.setText(text+ "\r\n" +text0+ "\r\n" +text1+ "\r\n" +text2);
-//_____________get.text ComboBox = Position/Standort______________                 
+        
+           //get.text ComboBox = Position/Standort______________                 
                 
             cb1.addItemListener(new ItemListener()
         {
@@ -208,15 +221,34 @@ JLabel jl0 = new JLabel();
                 //textfeldausgabe es übernehmen und anzeigen kann
                  jta.setText((String) cb1.getSelectedItem()); 
                  System.out.println(jta);
-            }                              
-        });       
-//____________________________________________________________________                 
-                
-              
-                
-                
-        });
+            } 
+           
+               
+        
             
+            
+       });       
+        
+ });
+//____________________________________________________________________    
+
+
+
+//____________________ActionListener für JButton Mitarbeiter anlegen __________________________________
+          jcb3.addActionListener((ActionEvent e) -> 
+          {    
+                String id    = jtf0.getText();
+            try {
+                String Datensatz = zeigeDatensatz();
+                jta.setText(Datensatz);
+            } catch (Exception ex) {
+                Logger.getLogger(RealTimeCC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+ });
+//____________________________________________________________________    
+
+
 //_________Methodenaufruf für d. Datenbank / Login__________________________
        // Login();
 //erstelleTabelle();
