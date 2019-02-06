@@ -122,43 +122,21 @@ public class Datenbank
         {
             abbruch.printStackTrace();
         }
-        
+       
     }
     
-    //Methode zum Anpassen vorhandener Datensätze in der DB
-    public static void aendereDatensatz() throws Exception
-    {
-        final String nameneu = JOptionPane.showInputDialog("Geben Sie für den bestehenden Datensatz den neuen Wert für Name ein");
-        final String id = JOptionPane.showInputDialog("Geben Sie die ImperiumID des zu ändernden Datensatzes ein");
-        
-        try
-        {
-            Connection verbindung = erstelleVerbindung();
-            befehl = verbindung.createStatement();
-            String sql_change = "UPDATE mitarbeiter SET RealTimeCCName =  ('" +nameneu+ "') WHERE  RealTimeCCID = ('"+id+"')";          
-            befehl.executeUpdate(sql_change);
-            System.out.println("Datensatz mit der RealTimeCCID " + id + " erfolgreich geändert.");
-           
-        }
-        catch (Exception abbruch)
-        {
-            abbruch.printStackTrace();
-        }
-    }   
-    
+   
     //Methode zum Löschen vorhandener Datensätze in der DB
-    public static void loescheDatensatz() throws Exception
+    public static void loescheDatensatz(String id) throws Exception
     {
-        //final String ID = JOptionPane.showInputDialog("Geben Sie die ID des Datensatzes ein, der gelöscht werden soll");
-        final String id = JOptionPane.showInputDialog("Geben Sie die ImperiumID des zu löschenden Datensatzes ein");
-        
+     
         try
         {
             Connection verbindung = erstelleVerbindung();
             befehl = verbindung.createStatement();
-            String sql_delete = "DELETE FROM Mitarbeiter WHERE RealTimeCCID = ('"+id+"')";
+            String sql_delete = "DELETE FROM Mitarbeiter WHERE ID = ('"+id+"')";
             befehl.executeUpdate(sql_delete);
-            System.out.println("Datensatz mit der ImperiumID " +id + " erfolgreich gelöscht.");           
+            System.out.println("Datensatz mit der ID " +id + " erfolgreich gelöscht.");           
         }
         catch (Exception abbruch)
         {
@@ -166,29 +144,5 @@ public class Datenbank
         }
     } 
     
-    public static void erstelleTabelle() throws Exception
-    {
-        final String tblname = JOptionPane.showInputDialog("Geben Sie den Namen für die neue Datenbanktabelle ein");
-        final String ID = JOptionPane.showInputDialog("Geben Sie den Namen für die erste Spalte(ID) ein");
-        final String spaltenname = JOptionPane.showInputDialog("Geben Sie den Namen für die erste Spalte(ID) ein");
-        try
-        {
-            String sql = "CREATE TABLE " + tblname +
-                   "( " + ID + " INTEGER not NULL, " +
-                   " first VARCHAR(255), " + 
-                   " last VARCHAR(255), " + 
-                   " age INTEGER, " + 
-                   " PRIMARY KEY (" +  ID  + " ))"; 
-            Connection verbindung = erstelleVerbindung();          
-            PreparedStatement erstelleTabelle = verbindung.prepareStatement(sql);
-            erstelleTabelle.executeUpdate();
-            System.out.println("neue Datenbanktabelle erfolgreich erstellt.");                                  
-        }
-        catch (Exception abbruch)
-        {
-            System.out.println(abbruch.getMessage());
-        }
-    }   
-
     
 }
