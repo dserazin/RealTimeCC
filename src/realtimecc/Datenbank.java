@@ -73,7 +73,8 @@ public class Datenbank
             {   //Ausgabe der gefundenen Datensätze mit Zuordnung der Funktion getInt()/getString() fuehr 
                 //die Spalte RealTimeCCID (Datentyp integer)
                 //die Spalte RealTimeCCName (Datentyp String)
-                ausgabe2 = ausgabe2 + (ausgabe.getInt("ID") + "  " + ausgabe.getString("Name")+ " " + ausgabe.getString("Nachname"))+"\r\n";
+                ausgabe2 = ausgabe2 + (ausgabe.getInt("ID") + "  " + ausgabe.getString("Name")
+                        + " " + ausgabe.getString("Nachname"))+"\r\n";
                 
             }
           
