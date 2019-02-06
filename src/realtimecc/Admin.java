@@ -21,6 +21,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import static realtimecc.Datenbank.ausgabe;
 import static realtimecc.Datenbank.erstelleDatensatz;
+import static realtimecc.Datenbank.loescheDatensatz;
 import static realtimecc.Datenbank.zeigeDatensatz;
 import static realtimecc.Login.Login;
 
@@ -42,19 +43,7 @@ public class Admin {
          jf.setVisible(true);
          jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-//___________ID zum Löschen des Datensatzes______________________________
 
-JLabel jl0 = new JLabel();
-            jl0.setText("ID");
-            jl0.setBounds(450, 30, 60, 30);
-            jl0.setForeground(Color.red);
-            jl0.setFont(new Font("areal",0,20));
-            jf.add(jl0);     
-            
-       JTextField jtf0 = new JTextField();
-            jtf0.setBounds(500, 30, 60, 30);
-            jtf0.setBackground(Color.LIGHT_GRAY);
-            jf.add(jtf0);
 //__________ Erste Reihe : Eingabe Name / Textfel________________________
        JLabel jl1 = new JLabel();
             jl1.setText("Name");
@@ -180,7 +169,7 @@ JLabel jl0 = new JLabel();
             jf.add(jta);  
             
 //____________________ActionListener für JButton Mitarbeiter anlegen __________________________________
-          jcb1.addActionListener((ActionEvent e) -> 
+         jcb1.addActionListener((ActionEvent e) -> 
    {
             
             String text  = jtf1.getText();
@@ -191,7 +180,7 @@ JLabel jl0 = new JLabel();
             String text4 = (String) cb2.getSelectedItem();
             
         // Textfeld wird bereinigt______
-             jtf0.setText(null);
+             
              jtf1.setText(null);
              jtf2.setText(null);
              jtf5.setText(null);
@@ -203,7 +192,7 @@ JLabel jl0 = new JLabel();
                 
                 erstelleDatensatz(text,text0,text1,text2,text3,text4);
                 // Text wird in JTextArea ausgegeben
-                jta.setText(" Daten gespeichert \r\n Vorgang abgeschlossen ");
+                jta.setText(" Daten werden gespeichert... \r\n Vorgang abgeschlossen.");
             } catch (Exception ex) {
                 Logger.getLogger(RealTimeCC.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -222,22 +211,33 @@ JLabel jl0 = new JLabel();
                  jta.setText((String) cb1.getSelectedItem()); 
                  System.out.println(jta);
             } 
-           
-               
-        
-            
+         
             
        });       
         
  });
-//____________________________________________________________________    
 
+//____________________________________________________________________
+ 
+ 
+          //___________ID zum Anzeigen / Löschen des Datensatzes________________
 
+       JLabel jl0 = new JLabel();
+            jl0.setText("ID");
+            jl0.setBounds(450, 30, 60, 30);
+            jl0.setForeground(Color.red);
+            jl0.setFont(new Font("areal",0,30));
+            jf.add(jl0);     
+            
+       JTextField jtf0 = new JTextField();
+            jtf0.setBounds(500, 30, 60, 30);
+            jtf0.setBackground(Color.LIGHT_GRAY);
+            jf.add(jtf0);  
 
-//____________________ActionListener für JButton Mitarbeiter anlegen __________________________________
+//____________________ActionListener für JButton Anzeigen ___________
           jcb3.addActionListener((ActionEvent e) -> 
           {    
-                String id    = jtf0.getText();
+               
             try {
                 String Datensatz = zeigeDatensatz();
                 jta.setText(Datensatz);
@@ -246,9 +246,19 @@ JLabel jl0 = new JLabel();
             }
             
  });
-//____________________________________________________________________    
-
-
+ 
+//___________________ActionListener für den JButton zum Löschen_____________  
+        jcb2.addActionListener((ActionEvent e)-> 
+        {
+                 String id = jtf0.getText();
+                 jtf0.setText(null);
+            try {
+                loescheDatensatz(id);
+            } catch (Exception ex) {
+                Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+                 
 //_________Methodenaufruf für d. Datenbank / Login__________________________
        // Login();
 //erstelleTabelle();
