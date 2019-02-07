@@ -48,7 +48,53 @@ public class Datenbank
     } 
    
     //Methode zum Abrufen der Datensätze aus der DB
-    public static String zeigeDatensatz() throws Exception
+    public static String zeigeDatensaetze() throws Exception
+    {
+        String ausgabe2 = null;
+        try
+        {  
+            
+            
+            //Erzeugen eines Objektes verbindung aus der Klasse Connection mit Zuweisung der Methode
+            //erstelleVerbindung();
+            Connection verbindung = erstelleVerbindung();
+            
+            //Klasseninstanz befehl bekommt Zuweisung des Objektes verbindung und ruft die Funktion
+            //createStatement auf --> wird benötigt, um im Folgenden den SQL-Befehl auszuführen
+            befehl = verbindung.createStatement();
+            
+            //Klasseninstanz ausgabe bekommt Zuweisung des Objektes befehl und ruft die Funktion
+            //executeQuery auf --> enthält den SQL-Syntax für SELECT FROM aus der Datenbanktabelle
+            //mitarbeiter
+            ausgabe = befehl.executeQuery("SELECT * FROM mitarbeiter");
+            
+            //Pro ausgelesenem Datensatz wird eine Zeile erzeugt
+            while(ausgabe.next())            
+            {   //Ausgabe der gefundenen Datensätze mit Zuordnung der Funktion getInt()/getString() fuehr 
+                //die Spalte RealTimeCCID (Datentyp integer)
+                //die Spalte RealTimeCCName (Datentyp String)
+                ausgabe2 = ausgabe2 + (ausgabe.getInt("ID") + "  " + ausgabe.getString("Name")
+                        + " " + ausgabe.getString("Nachname"))+"\r\n";
+                
+            }
+          
+            System.out.println("\n" + "\n" + "Datenabfrage erfolgreich abgeschlossen");
+            
+            //Nachdem alle Datensätze abgerufen wurden, wird die Verbindung zur DB geschlossen
+            verbindung.close();
+        }
+        catch(Exception abbruch)
+        {
+            //System.out.println(abbruch.getMessage());
+            abbruch.printStackTrace();
+        }
+        
+        return ausgabe2;
+    } 
+    
+    
+   //Methode um nur einen bestimmten Datensatz anzeigen zu lassen 
+     public static String zeigeDatensatz(String jtf1, String jtf2) throws Exception
     {
         String ausgabe2 = null;
         try
