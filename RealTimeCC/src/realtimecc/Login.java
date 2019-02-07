@@ -9,6 +9,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.sql.PreparedStatement;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -89,10 +91,14 @@ public class Login
             
            jcb1.addActionListener((ActionEvent e) -> 
   {
+               
                Logout();  
                Date date2 = new Date();
               jl0.setText("Logi Time "+date2.toString());
               
+             
+
+      // zeigeDatensatz();        
 //            try {
 //                zeigeDatensatz(jtf1,jtf2);
 //                System.out.println("Hallo Herr ");
