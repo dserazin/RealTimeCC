@@ -8,10 +8,12 @@ package realtimecc;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import static realtimecc.Logout.Logout;
 
 /**
  *
@@ -71,8 +73,14 @@ public class Login
             jcb1.setBounds(225, 120, 100, 30);
             jf.add(jcb1);
             
+            
+           jcb1.addActionListener((ActionEvent e) -> 
+           {
+               Logout();
+           });
 //_______________________________________________________________________            
             jf.repaint();
        jf.setVisible(true);
     }
+    
 }
