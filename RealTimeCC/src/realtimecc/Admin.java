@@ -40,7 +40,7 @@ public class Admin {
             jf.setLayout(null);
             jf.setSize(new Dimension(700, 700));
             jf.getContentPane().setBackground(Color.DARK_GRAY);
-            
+            jf.setLocationRelativeTo(jf);
          jf.setVisible(true);
          jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -85,7 +85,7 @@ public class Admin {
             jtf2.setBounds(230, 63, 200, 30); //X-Hor. ,Y-Senk. ,L ,B
             jtf2.setBackground(Color.LIGHT_GRAY);
             jf.add(jtf2);
-           
+          
 //________ Dritte Reihe : Eingabe Theorie / Textfeld____________             
        JLabel jl3 = new JLabel();
             jl3.setText("Position");
@@ -195,7 +195,7 @@ public class Admin {
             String text2 = jtf6.getText();  
             String text3 = (String) cb1.getSelectedItem();
             String text4 = (String) cb2.getSelectedItem();
-            PasswortCreate(jtf1,jtf2);
+            
         // Textfeld wird bereinigt______
              
              jtf1.setText(null);
@@ -282,7 +282,5 @@ public class Admin {
        
     }
 
-    private static void PasswortCreate(JTextField jtf1, JTextField jtf2) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }
