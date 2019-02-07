@@ -5,9 +5,15 @@
  */
 package realtimecc;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,14 +33,15 @@ public class Logout
             jf.setSize(new Dimension(590, 700));
       //      jf.setMinimumSize(new Dimension(300,300));
       //      jf.setMaximumSize(new Dimension(600,600));
-           
-       //     jf.setLocationRelativeTo(jf);
+          // jf.setLocation(50, 50);
+            jf.setLocationRelativeTo(jf);
             jf.getContentPane().setBackground(Color.DARK_GRAY);
      //       jf.getContentPane().setBackground(Color.green);
        
          jf.setVisible(true);
          jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+             
 //____________________________________________________________________         
           // Erste Reihe : Eingabe Name / Textfel             
        JLabel jl1 = new JLabel();
@@ -48,7 +55,15 @@ public class Logout
             jtf1.setBounds(200, 30, 200, 30);
             jtf1.setBackground(Color.LIGHT_GRAY);
             jf.add(jtf1);
+         
+         // DateTime________________
             
+       JLabel jl0 = new JLabel();
+            jl0.setText("Logout Time");
+            jl0.setBounds(100, 350, 400, 30);
+            jl0.setForeground(Color.red);
+            jl0.setFont(new Font("areal",0,20));
+            jf.add(jl0);
             
             // Zweite Reihe : Eingabe Fachrichtung / Textfeld                   
        JLabel jl2 = new JLabel();
@@ -64,12 +79,19 @@ public class Logout
             jf.add(jtf2);
             
             // Schaltfläche Berechnung
-       JButton jcb1 = new JButton("Senden", null);
+       JButton jcb1 = new JButton("SignOut", null);
             jcb1.setForeground(Color.blue);
             jcb1.setBackground(Color.red);
-            jcb1.setBounds(225, 120, 100, 30);
+            jcb1.setBounds(245, 120, 100, 30);
             jf.add(jcb1);
             
+            jcb1.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+             Date date = new Date();
+             jl0.setText("Logout Time "+date.toString());
+         }
+     });
 //_______________________________________________________________________            
             jf.repaint();
        jf.setVisible(true);

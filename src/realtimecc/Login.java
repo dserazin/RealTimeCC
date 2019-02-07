@@ -8,10 +8,16 @@ package realtimecc;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import static realtimecc.Datenbank.zeigeDatensatz;
+import static realtimecc.Logout.Logout;
 
 /**
  *
@@ -28,8 +34,8 @@ public class Login
             jf.setSize(new Dimension(590, 700));
       //      jf.setMinimumSize(new Dimension(300,300));
       //      jf.setMaximumSize(new Dimension(600,600));
-           
-       //     jf.setLocationRelativeTo(jf);
+           jf.setLocation(50, 50);
+         //   jf.setLocationRelativeTo(jf);
             jf.getContentPane().setBackground(Color.DARK_GRAY);
      //       jf.getContentPane().setBackground(Color.green);
        
@@ -50,6 +56,15 @@ public class Login
             jtf1.setBackground(Color.LIGHT_GRAY);
             jf.add(jtf1);
             
+        // DateTime________________
+            Date date1 = new Date();
+       JLabel jl0 = new JLabel();
+            jl0.setText(""+date1.toString());
+            jl0.setBounds(100, 300, 400, 90);
+            jl0.setForeground(Color.red);
+            jl0.setFont(new Font("areal",0,20));
+            jf.add(jl0);
+            
             
             // Zweite Reihe : Eingabe Fachrichtung / Textfeld                   
        JLabel jl2 = new JLabel();
@@ -60,19 +75,53 @@ public class Login
             jf.add(jl2);  
             
        JTextField jtf2 = new JTextField();
-            jtf2.setBounds(200, 63, 200, 30); //X-Hor. ,Y-Senk. ,L ,B
+            jtf2.setBounds(200, 63, 200, 30); //X-Hor. ,Y-Senk. ,Län. ,Br.
             jtf2.setBackground(Color.LIGHT_GRAY);
             jf.add(jtf2);
             
             // Schaltfläche Berechnung
-       JButton jcb1 = new JButton("Senden", null);
+       JButton jcb1 = new JButton("LogIn", null);
             jcb1.setForeground(Color.blue);
             jcb1.setBackground(Color.red);
-            jcb1.setBounds(225, 120, 100, 30);
+            jcb1.setBounds(245, 120, 100, 30);
             jf.add(jcb1);
             
+            
+           jcb1.addActionListener((ActionEvent e) -> 
+  {
+               Logout();  
+               Date date2 = new Date();
+              jl0.setText("Logi Time "+date2.toString());
+              
+//            try {
+//                zeigeDatensatz(jtf1,jtf2);
+//                System.out.println("Hallo Herr ");
+//            } catch (Exception ex) {
+//                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+            
+//          //__Login Daten mit Datenbank abgleichen_______
+//                 if (true) 
+//                 {
+//                     
+//                 } 
+//                 else 
+//                 {
+//                     
+//                 }     
+          
+           
+ });
+          
+        
+           
 //_______________________________________________________________________            
             jf.repaint();
        jf.setVisible(true);
     }
+
+    private static void zeigeDatensatz(JTextField jtf1, JTextField jtf2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }

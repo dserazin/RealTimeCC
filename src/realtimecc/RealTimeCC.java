@@ -9,6 +9,7 @@ package realtimecc;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import static realtimecc.Admin.Admin;
@@ -48,14 +49,17 @@ public class RealTimeCC {
             jf.add(jcb2);
             
             jcb1.addActionListener((ActionEvent e) -> {
-               Login();
+               Login(); 
+                Date date = new Date();
+              System.out.println(date.toString());
+             
             });     
             jcb2.addActionListener((ActionEvent e) -> {
                 
                     Admin();
             });
                             
-                   
+                  
                   
         jf.repaint();
         jf.setVisible(true);

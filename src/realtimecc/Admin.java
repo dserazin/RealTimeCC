@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 import static realtimecc.Datenbank.ausgabe;
 import static realtimecc.Datenbank.erstelleDatensatz;
 import static realtimecc.Datenbank.loescheDatensatz;
+import static realtimecc.Datenbank.zeigeDatensaetze;
 import static realtimecc.Datenbank.zeigeDatensatz;
 import static realtimecc.Login.Login;
 
@@ -43,8 +44,22 @@ public class Admin {
          jf.setVisible(true);
          jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+ //___________ID zum Anzeigen / Löschen des Datensatzes________________
 
-//__________ Erste Reihe : Eingabe Name / Textfel________________________
+       JLabel jl0 = new JLabel();
+            jl0.setText("ID");
+            jl0.setBounds(450, 30, 60, 30);
+            jl0.setForeground(Color.red);
+            jl0.setFont(new Font("areal",0,30));
+            jf.add(jl0);     
+            
+       JTextField jtf0 = new JTextField();
+            jtf0.setBounds(500, 30, 60, 30);
+            jtf0.setBackground(Color.LIGHT_GRAY);
+            jf.add(jtf0);  
+            
+            
+//__________ Erste Reihe : Eingabe Name / Textfeld________________________
        JLabel jl1 = new JLabel();
             jl1.setText("Name");
             jl1.setBounds(30, 30, 160, 30);
@@ -168,6 +183,8 @@ public class Admin {
             jta.setFont(new Font("areal",255,10));
             jf.add(jta);  
             
+         
+            
 //____________________ActionListener für JButton Mitarbeiter anlegen __________________________________
          jcb1.addActionListener((ActionEvent e) -> 
    {
@@ -178,7 +195,7 @@ public class Admin {
             String text2 = jtf6.getText();  
             String text3 = (String) cb1.getSelectedItem();
             String text4 = (String) cb2.getSelectedItem();
-            
+            PasswortCreate(jtf1,jtf2);
         // Textfeld wird bereinigt______
              
              jtf1.setText(null);
@@ -215,31 +232,20 @@ public class Admin {
             
        });       
         
+            
  });
 
 //____________________________________________________________________
  
  
-          //___________ID zum Anzeigen / Löschen des Datensatzes________________
-
-       JLabel jl0 = new JLabel();
-            jl0.setText("ID");
-            jl0.setBounds(450, 30, 60, 30);
-            jl0.setForeground(Color.red);
-            jl0.setFont(new Font("areal",0,30));
-            jf.add(jl0);     
-            
-       JTextField jtf0 = new JTextField();
-            jtf0.setBounds(500, 30, 60, 30);
-            jtf0.setBackground(Color.LIGHT_GRAY);
-            jf.add(jtf0);  
+         
 
 //____________________ActionListener für JButton Anzeigen ___________
           jcb3.addActionListener((ActionEvent e) -> 
           {    
                
             try {
-                String Datensatz = zeigeDatensatz();
+                String Datensatz = zeigeDatensaetze();
                 jta.setText(Datensatz);
             } catch (Exception ex) {
                 Logger.getLogger(RealTimeCC.class.getName()).log(Level.SEVERE, null, ex);
@@ -259,8 +265,8 @@ public class Admin {
             }
         });
                  
-//_________Methodenaufruf für d. Datenbank / Login__________________________
-       // Login();
+//_________Methodenaufruf für d. Datenbank __________________________
+       
 //erstelleTabelle();
 //erstelleVerbindung();
 //zeigeDatensatz();
@@ -274,5 +280,9 @@ public class Admin {
         jf.setVisible(true);
         
        
+    }
+
+    private static void PasswortCreate(JTextField jtf1, JTextField jtf2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
