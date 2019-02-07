@@ -137,9 +137,11 @@ public class Datenbank
         
         return ausgabe2;
     } 
-    
+     
     //Methode zum Erstellen neuer Datensätze in der DB
-    public static void erstelleDatensatz(String text,String text0,String text1,String text2,String text3, String text4) throws Exception
+    public static void erstelleDatensatz(String text,String text0,
+                                         String text1,String text2,
+                                         String text3, String text4) throws Exception
     {
      
         
@@ -152,7 +154,7 @@ public class Datenbank
             befehl = verbindung.createStatement();
             
             String sql_insert = "INSERT INTO mitarbeiter(Name,Nachname,Email,Telefonnummer,"
-                    + "Position,Standort) "
+                    + "Position,Standort,Usename,Password) "
                     + "VALUES('"+text+"','"+text0+"','"+text1+"','"+text2+"','"+text3+"','"+text4+"')";
             //Objektes erstelleEintrag ruft die Funktion
             //executeUpdate auf --> enthält den SQL-Syntax für INSERT INTO in die Datenbanktabelle
