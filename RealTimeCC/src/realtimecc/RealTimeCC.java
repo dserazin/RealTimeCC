@@ -8,28 +8,12 @@ package realtimecc;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Date;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import static realtimecc.Admin.Admin;
-import static realtimecc.Datenbank.aendereDatensatz;
-import static realtimecc.Datenbank.erstelleDatensatz;
-import static realtimecc.Datenbank.erstelleTabelle;
-import static realtimecc.Datenbank.erstelleVerbindung;
-import static realtimecc.Datenbank.loescheDatensatz;
-import static realtimecc.Datenbank.zeigeDatensatz;
 import static realtimecc.Login.Login;
-import static realtimecc.Logout.Logout;
 
 /**
  *
@@ -39,13 +23,12 @@ public class RealTimeCC {
 
     /**
      * @param args the command line arguments
-     * @throws java.lang.Exception
      */
     public static void main(String[] args) throws Exception 
     {
          // Erstelle Frame um zwischen Login und Admin zu wählen
         JFrame jf = new JFrame();
-            jf.setTitle("IHKPrüfung_Auswertung");
+            jf.setTitle("Login Portal");
             jf.setLayout(null);
             jf.setSize(new Dimension(600, 300));
             jf.getContentPane().setBackground(Color.DARK_GRAY);
@@ -66,14 +49,17 @@ public class RealTimeCC {
             jf.add(jcb2);
             
             jcb1.addActionListener((ActionEvent e) -> {
-               Login();
+               Login(); 
+                Date date = new Date();
+              System.out.println(date.toString());
+             
             });     
             jcb2.addActionListener((ActionEvent e) -> {
                 
                     Admin();
             });
                             
-                   
+                  
                   
         jf.repaint();
         jf.setVisible(true);
