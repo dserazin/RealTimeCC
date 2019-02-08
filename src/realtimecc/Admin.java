@@ -20,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import static realtimecc.Datenbank.erstelleDatensatz;
 import static realtimecc.Datenbank.loescheDatensatz;
 import static realtimecc.Datenbank.zeigeDatensaetze;
 
@@ -202,14 +203,15 @@ public class Admin {
              cb1.setSelectedItem(null);
              cb2.setSelectedItem(null);
              
-             String[] psw = pswGenerieren(text, text0);
-                System.out.println(psw);
+            // PasswortGenerator zugriff 
+//             String[] psw = pswGenerieren(text, text0);
+//                System.out.println(psw[0]);
                 
             try {
          
-                erstelleDatensatz(text,text0,text1,text2,text3,text4,psw);
+                erstelleDatensatz(text,text0,text1,text2,text3,text4); //,psw
                 // Text wird in JTextArea ausgegeben 
-                jta.setText(" Daten werden gespeichert... \r\n Vorgang abgeschlossen.\r\n "+psw);
+       jta.setText(" Daten werden gespeichert... \r\n Vorgang abgeschlossen.\r\n "); //+psw
             } catch (Exception ex) {
                 Logger.getLogger(RealTimeCC.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -282,15 +284,16 @@ public class Admin {
     }
     
 
-    private static void pswGenerieren() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    private static void pswGenerieren() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//    private static String[] pswGenerieren(String text, String text0) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//    private static void erstelleDatensatz(String text, String text0, String text1, String text2, String text3, String text4, String[] pwb) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
-    private static String[] pswGenerieren(String text, String text0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private static void erstelleDatensatz(String text, String text0, String text1, String text2, String text3, String text4, String[] pwb) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
