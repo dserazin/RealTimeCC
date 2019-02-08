@@ -11,6 +11,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -19,12 +20,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import static realtimecc.Datenbank.ausgabe;
-import static realtimecc.Datenbank.erstelleDatensatz;
 import static realtimecc.Datenbank.loescheDatensatz;
 import static realtimecc.Datenbank.zeigeDatensaetze;
-import static realtimecc.Datenbank.zeigeDatensatz;
-import static realtimecc.Login.Login;
 
 /**
  *
@@ -195,7 +192,7 @@ public class Admin {
             String text2 = jtf6.getText();  
             String text3 = (String) cb1.getSelectedItem();
             String text4 = (String) cb2.getSelectedItem();
-            PasswortCreate(jtf1,jtf2);
+            
         // Textfeld wird bereinigt______
              
              jtf1.setText(null);
@@ -205,16 +202,18 @@ public class Admin {
              cb1.setSelectedItem(null);
              cb2.setSelectedItem(null);
              
-            try {
+             String[] psw = pswGenerieren(text, text0);
+                System.out.println(psw);
                 
-                erstelleDatensatz(text,text0,text1,text2,text3,text4);
-                // Text wird in JTextArea ausgegeben
-                jta.setText(" Daten werden gespeichert... \r\n Vorgang abgeschlossen.");
+            try {
+         
+                erstelleDatensatz(text,text0,text1,text2,text3,text4,psw);
+                // Text wird in JTextArea ausgegeben 
+                jta.setText(" Daten werden gespeichert... \r\n Vorgang abgeschlossen.\r\n "+psw);
             } catch (Exception ex) {
                 Logger.getLogger(RealTimeCC.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-        
+      
            //get.text ComboBox = Position/Standort______________                 
                 
             cb1.addItemListener(new ItemListener()
@@ -267,7 +266,7 @@ public class Admin {
                  
 //_________Methodenaufruf für d. Datenbank __________________________
        
-//erstelleTabelle();
+
 //erstelleVerbindung();
 //zeigeDatensatz();
 //erstelleDatensatz();
@@ -281,8 +280,17 @@ public class Admin {
         
        
     }
+    
 
-    private static void PasswortCreate(JTextField jtf1, JTextField jtf2) {
+    private static void pswGenerieren() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private static String[] pswGenerieren(String text, String text0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private static void erstelleDatensatz(String text, String text0, String text1, String text2, String text3, String text4, String[] pwb) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
