@@ -1,4 +1,4 @@
-# RealTimeCC
+# RealTimeCC   Zeiterfassungssystem
 
 Ziel/Vision: Zeiterfassungssystem CC RealTimeCC
 Aufgabe/Zielstellung:
