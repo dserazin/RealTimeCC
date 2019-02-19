@@ -5,9 +5,7 @@
  */
 package realtimecc;
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -69,7 +67,7 @@ public class Logout
        JLabel jl2 = new JLabel();
             jl2.setText("Kennwort");
             jl2.setBounds(30, 63, 160, 30);
-            jl2.setForeground(Color.red);
+            jl2.setForeground(Color.RED);
             jl2.setFont(new Font("areal",0,20));
             jf.add(jl2);  
             
