@@ -140,7 +140,7 @@ public class Datenbank
     
     //Methode zum Erstellen neuer Datensätze in der DB
     public static void erstelleDatensatz(String text,String text0,String text1,
-            String text2,String text3, String text4) throws Exception
+            String text2,String text3, String text4, String benutzername,String pass) throws Exception
     {
      
         
@@ -153,8 +153,8 @@ public class Datenbank
             befehl = verbindung.createStatement();
             
             String sql_insert = "INSERT INTO mitarbeiter(Name,Nachname,Email,Telefonnummer,"
-                    + "Position,Standort) "
-                    + "VALUES('"+text+"','"+text0+"','"+text1+"','"+text2+"','"+text3+"','"+text4+"')";
+                    + "Position,Standort,Username,Passwort) "
+                    + "VALUES('"+text+"','"+text0+"','"+text1+"','"+text2+"','"+text3+"','"+text4+"','"+benutzername+"','"+pass+"')";
             //Objektes erstelleEintrag ruft die Funktion
             //executeUpdate auf --> enthält den SQL-Syntax für INSERT INTO in die Datenbanktabelle
             //RealTimeCCMitarbeiter
