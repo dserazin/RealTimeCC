@@ -14,6 +14,7 @@ import java.awt.event.ItemListener;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.print.attribute.standard.RequestingUserName;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -36,9 +37,9 @@ public class Admin {
         JFrame jf = new JFrame();
             jf.setTitle("IHKPrüfung_Auswertung");
             jf.setLayout(null);
-            jf.setSize(new Dimension(700, 700));
+            jf.setSize(new Dimension(675, 720));
             jf.getContentPane().setBackground(Color.DARK_GRAY);
-            
+            jf.setLocationRelativeTo(jf);
          jf.setVisible(true);
          jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -47,7 +48,7 @@ public class Admin {
        JLabel jl0 = new JLabel();
             jl0.setText("ID");
             jl0.setBounds(450, 30, 60, 30);
-            jl0.setForeground(Color.red);
+            jl0.setForeground(Color.WHITE);
             jl0.setFont(new Font("areal",0,30));
             jf.add(jl0);     
             
@@ -61,7 +62,7 @@ public class Admin {
        JLabel jl1 = new JLabel();
             jl1.setText("Name");
             jl1.setBounds(30, 30, 160, 30);
-            jl1.setForeground(Color.red);
+            jl1.setForeground(Color.WHITE);
             jl1.setFont(new Font("areal",0,20));
             jf.add(jl1);     
             
@@ -75,7 +76,7 @@ public class Admin {
        JLabel jl2 = new JLabel();
             jl2.setText("Nachname");
             jl2.setBounds(30, 63, 160, 30);
-            jl2.setForeground(Color.red);
+            jl2.setForeground(Color.WHITE);
             jl2.setFont(new Font("areal",0,20));
             jf.add(jl2);  
             
@@ -88,7 +89,7 @@ public class Admin {
        JLabel jl3 = new JLabel();
             jl3.setText("Position");
             jl3.setBounds(30, 162, 180, 30);
-            jl3.setForeground(Color.red);
+            jl3.setForeground(Color.WHITE);
             jl3.setFont(new Font("areal",0,20));
             jf.add(jl3);  
             
@@ -106,7 +107,7 @@ public class Admin {
        JLabel jl4 = new JLabel();
             jl4.setText("Standort");
             jl4.setBounds(30, 195, 180, 30);
-            jl4.setForeground(Color.red);
+            jl4.setForeground(Color.WHITE);
             jl4.setFont(new Font("areal",0,20));
             jf.add(jl4);  
             
@@ -128,7 +129,7 @@ public class Admin {
        JLabel jl5 = new JLabel();
             jl5.setText("E-Mail");
             jl5.setBounds(30, 96, 180, 30);//30, 162, 180, 30
-            jl5.setForeground(Color.red);
+            jl5.setForeground(Color.WHITE);
             jl5.setFont(new Font("areal",0,20));
             jf.add(jl5);  
             
@@ -141,7 +142,7 @@ public class Admin {
        JLabel jl6 = new JLabel();
             jl6.setText("Tel.-Nummer");
             jl6.setBounds(30, 129, 180, 30);//30, 195, 180, 30
-            jl6.setForeground(Color.red);
+            jl6.setForeground(Color.WHITE);
             jl6.setFont(new Font("areal",0,20));
             jf.add(jl6);  
             
@@ -203,15 +204,21 @@ public class Admin {
              cb1.setSelectedItem(null);
              cb2.setSelectedItem(null);
              
-            // PasswortGenerator zugriff 
-//             String[] psw = pswGenerieren(text, text0);
-//                System.out.println(psw[0]);
+             //PasswortGenerator zugriff 
+             PasswordCreate psw = new PasswordCreate();
+             String[] pid = psw.generierePid(text, text2);
+             System.out.println(pid[0]+" "+pid[1]);
+             
+               String benutzername = pid[0]; 
+               String pass = pid[1];
+               
                 
             try {
          
-                erstelleDatensatz(text,text0,text1,text2,text3,text4); //,psw
+                erstelleDatensatz(text,text0,text1,text2,text3,text4,benutzername,pass); //,psw
                 // Text wird in JTextArea ausgegeben 
-       jta.setText(" Daten werden gespeichert... \r\n Vorgang abgeschlossen.\r\n "); //+psw
+       jta.setText(" Daten werden gespeichert... \r\n Vorgang abgeschlossen.\r\n "
+                    +"Username: "+benutzername +"\r\n"+"Passwort: "+pass); //+psw
             } catch (Exception ex) {
                 Logger.getLogger(RealTimeCC.class.getName()).log(Level.SEVERE, null, ex);
             }
