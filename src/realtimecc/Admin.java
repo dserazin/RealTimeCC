@@ -48,7 +48,7 @@ public class Admin {
        JLabel jl0 = new JLabel();
             jl0.setText("ID");
             jl0.setBounds(450, 30, 60, 30);
-            jl0.setForeground(Color.WHITE);
+            jl0.setForeground(Color.red);
             jl0.setFont(new Font("areal",0,30));
             jf.add(jl0);     
             
@@ -62,7 +62,7 @@ public class Admin {
        JLabel jl1 = new JLabel();
             jl1.setText("Name");
             jl1.setBounds(30, 30, 160, 30);
-            jl1.setForeground(Color.WHITE);
+            jl1.setForeground(Color.red);
             jl1.setFont(new Font("areal",0,20));
             jf.add(jl1);     
             
@@ -76,7 +76,7 @@ public class Admin {
        JLabel jl2 = new JLabel();
             jl2.setText("Nachname");
             jl2.setBounds(30, 63, 160, 30);
-            jl2.setForeground(Color.WHITE);
+            jl2.setForeground(Color.red);
             jl2.setFont(new Font("areal",0,20));
             jf.add(jl2);  
             
@@ -89,7 +89,7 @@ public class Admin {
        JLabel jl3 = new JLabel();
             jl3.setText("Position");
             jl3.setBounds(30, 162, 180, 30);
-            jl3.setForeground(Color.WHITE);
+            jl3.setForeground(Color.red);
             jl3.setFont(new Font("areal",0,20));
             jf.add(jl3);  
             
@@ -107,7 +107,7 @@ public class Admin {
        JLabel jl4 = new JLabel();
             jl4.setText("Standort");
             jl4.setBounds(30, 195, 180, 30);
-            jl4.setForeground(Color.WHITE);
+            jl4.setForeground(Color.red);
             jl4.setFont(new Font("areal",0,20));
             jf.add(jl4);  
             
@@ -129,7 +129,7 @@ public class Admin {
        JLabel jl5 = new JLabel();
             jl5.setText("E-Mail");
             jl5.setBounds(30, 96, 180, 30);//30, 162, 180, 30
-            jl5.setForeground(Color.WHITE);
+            jl5.setForeground(Color.red);
             jl5.setFont(new Font("areal",0,20));
             jf.add(jl5);  
             
@@ -142,7 +142,7 @@ public class Admin {
        JLabel jl6 = new JLabel();
             jl6.setText("Tel.-Nummer");
             jl6.setBounds(30, 129, 180, 30);//30, 195, 180, 30
-            jl6.setForeground(Color.WHITE);
+            jl6.setForeground(Color.red);
             jl6.setFont(new Font("areal",0,20));
             jf.add(jl6);  
             
