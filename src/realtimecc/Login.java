@@ -10,13 +10,12 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import static realtimecc.Datenbank.zeigeDatensatz;
+
 import static realtimecc.Logout.Logout;
 
 /**
